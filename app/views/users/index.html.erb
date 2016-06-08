@@ -1,0 +1,70 @@
+<% @title_tag = "All User Profiles" %>
+<% @body_id = "all-user-profiles" %>
+
+<% # Title tag %>
+<% content_for :head do
+  @title_tag
+end %>
+
+<% # Body tag ID %>
+<% content_for :body_id do
+  @body_id
+end %>
+
+<section>
+  <article>
+
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-12">
+		  <h1>All User Profiles</h1>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-12">
+		  <table id="all-users-table">
+			<thead>
+			<tr>
+			  <th>ID</th>
+			  <th>First / Last Names</th>
+			  <th>Email</th>
+			  <th class="tablet-hide">User Type</th>
+			  <th>Edit</th>
+			</tr>
+			</thead>
+			<tbody>
+			<% @users.each do |u| %>
+				<tr>
+				  <td>
+					<%= u.id %>
+				  </td>
+				  <td>
+					<%= u.first_name %> <%= u.last_name %>
+				  </td>
+				  <td>
+					<%= u.email %>
+				  </td>
+				  <td class="tablet-hide">
+					<%= u.user_type %>
+				  </td>
+				  <td>
+					<form action="/users/<%= u.id %>" method="get">
+					  <input type="submit" value="Edit" />
+
+					</form>
+				  </td>
+				</tr>
+			<% end %>
+			</tbody>
+		  </table>
+
+		</div>
+	  </div>
+	</div>
+
+  </article>
+
+</section>

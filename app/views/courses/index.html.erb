@@ -1,0 +1,79 @@
+<% @title_tag = "Seattle Area Disc Golf" %>
+<% @body_id = "home" %>
+
+<% # Title tag %>
+<% content_for :head do
+  @title_tag
+end %>
+
+<% # Body tag ID %>
+<% content_for :body_id do
+  @body_id
+end %>
+
+
+<section>
+  <article id="slideshow">
+	<div class="row">
+	  <div class="span12">
+		<div class="responsive-images">
+
+			<!-- <img src="/assets/home-slideshow/pic<%= rand(1..4) %>.jpg" width="1300" height="400" alt="disc golf" /> -->
+			<%= image_tag("https://sites.google.com/site/seattlediscgolf2/_/rsrc/1441824718380/home/pic#{rand(1..4)}.jpg", size:"1300x400", alt:"person playing disc golf") %>
+
+		</div>
+	  </div>
+	</div>
+  </article>
+
+  <article>
+
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-12">
+
+		  <table id="course-list">
+			<thead>
+			<tr>
+			  <th>Course</th>
+			  <th>Total Comments</th>
+			  <th class="tablet-hide">Latest Comment</th>
+			</tr>
+			</thead>
+			<tbody>
+				<% @courses.each do |c| %>
+					<tr>
+					  <td>
+						<h2><a href="/courses/<%= c.id %>"><%= c.name %></a></h2>
+						<p><%= c.city %>, <%= c.state %><br />
+						  <a href="/courses/<%= c.id %>">See info</a></p>
+					  </td>
+					  <td>
+						<% # Display a comment count if there are more than 0 comments %>
+						<% if c.comments.count > 0 %>
+							<h2><a href="/courses/<%= c.id %>#comments"><%= c.comments.count %></a></h2>
+						<% else %>
+							<h2>0</h2>
+						<% end %>
+					  </td>
+					  <td class="tablet-hide">
+						<% # Display a commenter name/latest comment if there are more than 0 comments %>
+						<% if c.comments.count > 0 %>
+							<h2><%= c.comments.last.user.first_name %></h2>
+							<p><a href="/courses/<%= c.id %>#comments"><%= c.comments.last.content %></a></p>
+						<% else %>
+							<h2>No Comments</h2>
+							<p>&nbsp;</p>
+						<% end %>
+					  </td>
+					</tr>
+				<% end %>
+
+			</tbody>
+		  </table>
+		</div>
+	  </div>
+	</div>
+  </article>
+
+</section>

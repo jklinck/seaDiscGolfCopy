@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= yield :head %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="<%= yield :body_id %>">
+
+<header>
+  <nav>
+    <ul>
+      <li><a id="home-nav" href="/">Home</a></li>
+      <% if session[:user_id] %>
+          <li>
+            <form id="sign-out-form" action="/users/logout" method="post">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="submit" value="Sign Out" />
+            </form>
+          </li>
+          <li id="profile-link">
+            <a href="/users/<%= session[:user_id] %>">Your Profile</a>
+          </li>
+      <% else %>
+          <li><a id="signin-nav" href="/users/login">Sign In</a> / <a id="register-nav" href="/users/new">Register</a></li>
+      <% end %>
+    </ul>
+    <a id="logo" href="/"></a>
+  </nav>
+</header>
+
+<%= yield %>
+
+<footer>
+  <p>&copy;<%= Time.now.year %> Joe Klinck and Matt Jennings. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

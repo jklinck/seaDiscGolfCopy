@@ -1,0 +1,52 @@
+<% @title_tag = "Edit Comment" %>
+<% @body_id = "edit-comment" %>
+
+<% # Title tag %>
+<% content_for :head do
+  @title_tag
+end %>
+
+<% # Body tag ID %>
+<% content_for :body_id do
+  @body_id
+end %>
+
+<section>
+	<article>
+		<div class="container narrow">
+
+		  <div class="row">
+			<div class="col-md-12">
+			  <h1>Edit Comment</h1>
+			</div>
+		  </div>
+
+		  <div class="row">
+			<form id="login-register-form"  action="/comments/<%= @comment.id %>" method="post">
+			  <input type="hidden" name="_method" value="patch">
+			  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			  <input type="hidden" name="comment[user_id]" value="<%= @user.id %>">
+			  <input type="hidden" name="comment[course_id]" value="<%= @course.id %>">
+
+			  <div class="col-md-2">
+				<label for="email">Comment</label>
+			  </div>
+			  <div class="col-md-10">
+				<textarea type="text" name="comment[content]"><%= @comment.content %></textarea>
+			  </div>
+
+			  <div class="col-md-10 col-md-offset-2">
+				<input type="submit" value="Update Comment" />
+			  </div>
+
+
+			</form>
+		  </div>
+
+		</div>
+
+
+	</article>
+
+
+</section>

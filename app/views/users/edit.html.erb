@@ -1,0 +1,84 @@
+<% @title_tag = "Edit #{@user.first_name} #{@user.last_name} User Profile" %>
+<% @body_id = "user-profile-edit" %>
+
+<% # Title tag %>
+<% content_for :head do
+  @title_tag
+end %>
+
+<section>
+  <article>
+	<div class="container narrow">
+	  <div class="row">
+		<div class="col-md-12">
+		  <h1>Edit <%= @user.first_name %> <%= @user.last_name %> User Profile</h1>
+
+		  <% # Form error validations %>
+		  <% if @user.errors.any? %>
+			  <% @user.errors.full_messages.each do |error| %>
+				  <p class="error"><%= error %></p>
+			  <% end %>
+		  <% end %>
+		</div>
+	  </div>
+
+
+	  <div class="row">
+		<form id="login-register-form" action="/users/<%= @user.id %>" method="post">
+		  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		  <input type="hidden" name="_method" value="patch">
+		  <% if @user.user_type == "admin" %>
+			  <input type="hidden" name="user[user_type]" value="admin">
+		  <% else %>
+			  <input type="hidden" name="user[user_type]" value="regular">
+		  <% end %>
+
+		  <div class="col-md-2">
+			<label for="first_name">First Name</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="text" name="user[first_name]" value="<%=@user.first_name%>">
+		  </div>
+
+		  <div class="col-md-2">
+			<label for="last_name">Last Name</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="text" name="user[last_name]" value="<%=@user.last_name%>">
+		  </div>
+
+		  <div class="col-md-2">
+			<label for="email">Email</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="text" name="user[email]" value="<%=@user.email%>">
+		  </div>
+
+		  <div class="col-md-2">
+			<label for="password">New Password</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="password" name="user[password]" />
+		  </div>
+
+		  <div class="col-md-10 col-md-offset-2">
+			<input type="submit" value="Update Profile" />
+		  </div>
+		</form>
+
+		<div clas="col-md-12">
+		  <p>&nbsp;</p>
+		</div>
+
+		<div class="col-md-10 col-md-offset-2">
+		  <form id="login-register-form" action="/users/<%= @user.id %>" method="post">
+			<input type="hidden" name="_method" value="delete">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<input type="submit" value="Delete Profile">
+		  </form>
+		</div>
+	  </div>
+
+	</div>
+  </article>
+</section>

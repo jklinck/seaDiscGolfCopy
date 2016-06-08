@@ -1,0 +1,92 @@
+<% @title_tag = "Edit #{@course.name} Course" %>
+<% @body_id = "edit-course" %>
+
+<% # Title tag %>
+<% content_for :head do
+  @title_tag
+end %>
+
+
+<section>
+  <article>
+	<div class="container narrow">
+	  <div class="row">
+		<div class="col-md-12">
+		  <h1>Edit <%= @course.name %> Course</h1>
+		</div>
+	  </div>
+
+	  <div class="row">
+		<form id="login-register-form" action="/courses/<%= @course.id %>" method="post">
+			<input type="hidden" name="_method" value="patch">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+		  <div class="col-md-2">
+			<label for="first_name">Name</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="text" name="course[name]" value="<%= @course.name %>">
+		  </div>
+
+		  <div class="col-md-2">
+			<label for="street">Street</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="text" name="course[street]" value="<%= @course.street %>">
+		  </div>
+
+		  <div class="col-md-2">
+			<label for="city">City</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="text" name="course[city]" value="<%= @course.city %>">
+		  </div>
+
+		  <div class="col-md-2">
+			<label for="city">State</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="text" name="course[state]" value="<%= @course.state %>">
+		  </div>
+
+		  <div class="col-md-2">
+			<label for="zip_code">Zip Code</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="text" name="course[zip_code]" value="<%= @course.zip_code %>">
+		  </div>
+
+		  <div class="col-md-2">
+			<label for="google_map">Google Map Link</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="text" name="course[google_map]" value="<%= @course.google_map %>">
+		  </div>
+
+		  <div class="col-md-10 col-md-offset-2">
+			<input type="submit" value="Update Course" />
+		  </div>
+
+		</form>
+
+	  </div>
+
+	  <div class="row">
+		<div class="col-md-12">
+		  <p>&nbsp;</p>
+		</div>
+	  </div>
+
+	  <div class="row">
+		<div class="col-md-10 col-md-offset-2">
+		  <form id="login-register-form" action="/courses/<%= @course.id %>" method="post">
+			<input type="hidden" name="_method" value="delete">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<input type="submit" value="Delete this course">
+		  </form>
+		</div>
+	  </div>
+
+	</div>
+  </article>
+</section>

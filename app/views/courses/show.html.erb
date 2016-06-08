@@ -1,0 +1,91 @@
+<% @title_tag = "#{@course.name} Course" %>
+<% @body_id = "show-course" %>
+
+<% # Title tag %>
+<% content_for :head do
+  @title_tag
+end %>
+
+<% # Body tag ID %>
+<% content_for :body_id do
+  @body_id
+end %>
+
+<section>
+	<article>
+	  <div class="container">
+
+		  <div class="row">
+			<div class="col-md-12">
+			  <iframe class="google-map" src="<%= @course.google_map %>" frameborder="0" allowfullscreen></iframe>
+
+			</div>
+		  </div>
+
+		  <div class="row">
+			<div class="col-md-6 course-address">
+				<h1><%= @course.name %></h1>
+				<p>
+				  <%= @course.street %><br />
+				  <%= @course.city %>, <%=  @course.state %> <%=  @course.zip_code %>
+				</p>
+
+				<% if session[:user_id] && session[:user_type] == "admin" %>
+			  		<h2><a href="/courses/edit/<%=  @course.id %>">Edit Course</a></h2>
+				  	<h2><a href="/courses/new">Add New Course</a></h2>
+				<% end %>
+			</div>
+
+			<div class="col-md-6 comments">
+			  	<a name="comments"></a>
+				<h2>Comments</h2>
+				<% if @course.comments.reverse_each do |comment| %>
+					<p>
+						<span class="name"><%=  comment.user.first_name %></span><br />
+						<%= comment.content %><br />
+						<% if session[:user_id] == comment.user_id %>
+							<form action="/comments/<%= comment.id %>" method="post">
+								<input type="hidden" name="_method" value="delete">
+								<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+								<input type="submit" value="Delete">
+							</form>
+
+					  		<form action="/comments/edit/<%= comment.id %>" method="get">
+							  <input type="submit" value="Edit" />
+							</form>
+
+					</p>
+
+				  <% end %>
+
+			  	<% end.empty? %>
+				  	<p>No comments.</p>
+
+				<% end %>
+
+			  	<% if session[:user_id] %>
+				  	<h2>New Comment</h2>
+					  <form action="/comments" method="post">
+						<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+						<% if session[:user_id] %>
+							<input type="hidden" name="comment[user_id]" value="<%= @user.id %>">
+						<% end %>
+						<input type="hidden" name="comment[course_id]" value="<%= @course.id %>">
+						<textarea name="comment[content]"></textarea>
+						<br></br>
+						<input type="submit" value="Submit a comment">
+					  </form>
+			  	<% end %>
+
+			</div>
+		  </div>
+	  </div>
+
+	</article>
+
+</section>
+
+
+
+
+

@@ -1,0 +1,395 @@
+/****** General ******/
+body {
+    font: normal 14px/22px Helvetica, Arial, sans-serif;
+    background: #333;
+}
+
+h1 {
+    color: #006633;
+}
+
+h2 {
+    color: #006633;
+    font-size: 22px;
+}
+
+h3 {
+    color: #006633;
+    font-size: 18px;
+}
+
+a:link, a:visited {
+    color: #006633;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: #006633;
+    text-decoration: underline;
+}
+
+p a:link, p a:visited {
+    border: 2px dotted #006633;
+    border-width: 0 0 2px 0;
+}
+
+p a:hover, p a:active {
+    border-width: 0;
+    text-decoration: none;
+}
+
+.wrapper {
+    display: block;
+    min-width: 920px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.responsive-images img {
+    width: 100%;
+    height: auto;
+}
+
+.light-gray {
+    color: #ccc;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+/****** Navigation and Header ******/
+nav {
+    background: #333;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    overflow: hidden;
+}
+
+nav ul {
+    display: inline-block;
+    list-style: none;
+    height: 100px;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline-block;
+    float: left;
+    line-height: 100px;
+    font-size: 20px;
+    padding: 0 10px;
+    color: #ccc;
+}
+
+nav a:link, nav a:visited {
+    color: #ccc;
+    text-decoration: none;
+}
+
+nav a:hover, nav a:active {
+    color: #98c448;
+    text-decoration: none;
+}
+
+#home nav a#home-nav:link, #home nav a#home-nav:visited,
+#home nav a#home-nav:hover, #home nav a#home-nav:active {
+    color: #98c448;
+}
+
+#user-register nav a#register-nav:link, #user-register nav a#register-nav:visited,
+#user-register nav a#register-nav:hover, #user-register nav a#register-nav:active {
+    color: #98c448;
+}
+
+#user-login nav a#signin-nav:link, #user-login nav a#signin-nav:visited,
+#user-login nav a#signin-nav:hover, #user-login nav a#signin-nav:active {
+    color: #98c448;
+}
+
+nav #sign-out-form input {
+    line-height: 25px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background: #ccc;
+    color: #333;
+    padding: 0 5px;
+}
+
+#user-profile nav #profile-link a:link, #user-profile nav #profile-link a:visited,
+#user-profile nav #profile-link a:hover, #user-profile nav #profile-link a:active {
+    color: #98c448;
+}
+
+nav #profile-link {
+    font-size: 16px;
+    line-height: 100px;
+    text-align: left;
+    padding: 0;
+}
+
+#logo {
+    display: inline-block;
+    background: url(https://sites.google.com/site/seattlediscgolf2/_/rsrc/1441824697430/home/logo.png) no-repeat top left;
+    width: 140px;
+    height: 100px;
+    text-indent: -9999px;
+    line-height: 0;
+}
+
+a:hover#logo, a:active#logo {
+    background: url(https://sites.google.com/site/seattlediscgolf2/_/rsrc/1441824697430/home/logo.png) no-repeat bottom left;
+}
+
+.row {
+    margin: 0 !important;
+}
+
+/****** Content ******/
+section {
+    display: block;
+    width: 100%;
+    background: #fff;
+    padding: 0 0 50px;
+}
+
+.narrow {
+    width: 70%;
+    margin: 0 auto;
+}
+
+/****** Footer ******/
+footer {
+    background: #333;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    overflow: hidden;
+}
+
+footer p {
+    display: block;
+    width: auto;
+    margin: 0 auto;
+    color: #ccc;
+    line-height: 60px;
+}
+
+/****** Home (list of courses) ******/
+#course-list {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#course-list th {
+    vertical-align: top;
+    font-size: 22px;
+    padding: 10px;
+}
+
+#course-list td {
+    vertical-align: top;
+    padding: 10px;
+}
+
+#course-list thead tr {
+    color: #fff;
+    background: #000;
+}
+
+#course-list tbody tr:nth-child(odd) {
+    background: #B0B0B0;
+}
+
+#course-list tbody tr:nth-child(even) {
+    background: #ccc;
+}
+
+/****** Forms (i.e. user registration, login, etc.) ******/
+#login-register-form input[type=text], #login-register-form input[type=password],
+#login-register-form textarea {
+    margin: 0 0 10px;
+    width: 60%;
+}
+
+#login-register-form input[type=submit] {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 8px;
+}
+
+/****** Course Comments ******/
+.comments p {
+    padding: 5px 5px 0;
+}
+
+.comments .name {
+    color: #006633;
+}
+
+.comments form {
+    display: inline-block;
+}
+
+.comments input {
+    margin: 0 5px 0 0;
+    padding: 2px 8px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    display: inline-block;
+}
+
+/* google map */
+.google-map{
+    width: 100%;
+    height: 300px;
+    border: 0;
+}
+
+/****** User Profile ******/
+#user-profile h3 {
+    color: #000;
+}
+
+/****** All Users ******/
+#all-users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#all-users-table th {
+    vertical-align: top;
+    font-size: 22px;
+    padding: 10px;
+}
+
+#all-users-table td {
+    vertical-align: top;
+    padding: 10px;
+}
+
+#all-users-table thead tr {
+    color: #fff;
+    background: #000;
+}
+
+#all-users-table tbody tr:nth-child(odd) {
+    background: #B0B0B0;
+}
+
+#all-users-table tbody tr:nth-child(even) {
+    background: #ccc;
+}
+
+#all-users-table input {
+    display: inline-block;
+    line-height: 25px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background: #ccc;
+    color: #333;
+    padding: 10px 30px;
+    margin: 0 0 5px;
+}
+
+
+/****** Media Query for 991px and smaller  ******/
+@media only screen and (max-width: 991px){
+    /****** Single Course ******/
+    .course-address {
+        margin: 0 0 35px;
+    }
+
+    .course-address h2 {
+        font-size: 18px;
+    }
+
+    .course-address h2 a:link, .course-address h2 a:visited {
+        border: 2px dotted #006633;
+        border-width: 0 0 2px 0;
+    }
+
+    .course-address h2 a:hover, .course-address h2 a:active {
+        border-width: 0;
+        text-decoration: none;
+    }
+
+}
+
+
+/****** Media Query for iPads and Smaller Devices ******/
+@media only screen and (max-width: 768px){
+
+    /****** General ******/
+    .tablet-hide {
+        display: none;
+    }
+
+    /****** Navigation ******/
+    nav ul {
+        width: 100px;
+    }
+
+    nav li {
+        text-align: left;
+        display: block;
+        line-height: 26px;
+        padding: 4px 0 0;
+    }
+
+    nav #profile-link {
+        font-size: 16px;
+        line-height: 38px;
+        text-align: left;
+        padding: 0;
+    }
+
+
+    /****** Content ******/
+    .narrow {
+        width: 100%;
+        margin: 0;
+    }
+
+    /****** Footer ******/
+    footer p {
+        font-size: 12px;
+    }
+
+    /****** All Users ******/
+    #all-users-table th {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    #all-users-table td {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    #all-users-table input {
+        padding: 20px 20px;
+        margin: 0 0 30px;
+    }
+}
+/*  width="100%" height="300"   */
+/* media queryies for large laptops and desktops */
+@media only screen and (min-width: 1224px){
+    .google-map{
+        height: 450px;
+    }
+}
